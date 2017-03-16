@@ -1,0 +1,13 @@
+# Ignore everything
+**
+
+# Except these
+!.gitignore
+!.mintty/**
+!.vimrc
+!.vim/**
+!.dircolors/**
+
+
+# Also ignore subdirectories
+!*/
