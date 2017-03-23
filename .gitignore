@@ -3,9 +3,11 @@
 */
 
 # Except these
+!.bash_profile
+!.bashrc
 !.gitignore
-!.mintty/**
 !.vimrc
+!.mintty/**
 !.vim/**
 !.ipython/**
 !.dircolors/**
