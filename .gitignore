@@ -1,13 +1,15 @@
 # Ignore everything
 **
+*/
 
 # Except these
 !.gitignore
 !.mintty/**
 !.vimrc
 !.vim/**
+!.ipython/**
 !.dircolors/**
+!.fonts/**
 
 
 # Also ignore subdirectories
-*/
