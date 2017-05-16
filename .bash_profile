@@ -43,6 +43,9 @@ alias vi=vim
 
 alias ls='ls --color=auto'
 
+# prints the last command, useful for appending to in-progress scripts
+alias lcmd="fc -ln -1 | sed 's/^\s*//'"
+
 # run non-git-managed .bash_profile
 touch "${HOME}/.bash_profile2"
 source  "${HOME}/.bash_profile2"
