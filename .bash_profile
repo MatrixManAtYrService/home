@@ -5,7 +5,7 @@ fi
 
 # colors
 eval `dircolors .dircolors/dircolors-solarized/dircolors.256dark`
-source .mintty/mintty-colors-solarized/sol.dark
+#source .mintty/mintty-colors-solarized/sol.dark
 alias ls='ls --color=auto'
 
 # vim stuff
