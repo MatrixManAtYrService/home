@@ -12,6 +12,9 @@ alias ls='ls --color=auto'
 set -o vi
 alias vi=vim
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # run non-git-managed .bash_profile
 touch "${HOME}/.bash_profile2"
 source  "${HOME}/.bash_profile2"
