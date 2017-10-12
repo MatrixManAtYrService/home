@@ -15,6 +15,9 @@ alias vi=vim
 # prints the last command, useful for appending to in-progress scripts
 alias lcmd="fc -ln -1 | sed 's/^\s*//'"
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # run non-git-managed .bash_profile
 touch "${HOME}/.bash_profile2"
 source  "${HOME}/.bash_profile2"
