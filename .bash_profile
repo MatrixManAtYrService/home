@@ -1,4 +1,4 @@
-# source the users bashrc if it exists
+# source the user's bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
 fi
@@ -11,6 +11,12 @@ alias ls='ls --color=auto'
 # vim stuff
 set -o vi
 alias vi=vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# prints the last command, useful for appending to in-progress scripts
+alias lcmd="fc -ln -1 | sed 's/^\s*//'"
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
