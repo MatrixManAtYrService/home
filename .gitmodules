@@ -25,3 +25,6 @@
 [submodule ".gnome-terminal"]
 	path = .gnome-terminal
 	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
+[submodule ".vim/bundle/vim-ipython"]
+	path = .vim/bundle/vim-ipython
+	url = https://github.com/ivanov/vim-ipython
