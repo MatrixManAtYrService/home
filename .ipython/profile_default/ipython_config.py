@@ -1,6 +1,7 @@
 # Configuration file for ipython.
 
 c = get_config()
+c.TerminalInteractiveShell.editing_mode = 'vi'
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp configuration
