@@ -8,6 +8,9 @@ eval `dircolors .dircolors/dircolors-solarized/dircolors.256dark`
 #source .mintty/mintty-colors-solarized/sol.dark
 alias ls='ls --color=auto'
 
+alias darken="source ~/.darken.sh"
+alias lighten="source ~/.lighten.sh"
+
 # vim stuff
 set -o vi
 alias vi=vim
