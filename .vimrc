@@ -8,7 +8,7 @@ let mapleader = ","
 execute pathogen#infect()
 syntax on
 
-set bg=dark
+set bg=light
 set colorcolumn=120
 
 " Illuminate cursor crosshairs in the current buffer only
@@ -92,21 +92,19 @@ nmap <leader>ff :CtrlP<cr>
 
 let g:ctrlp_regexp = 1
 
-"" Nerd-tree
-"nmap <leader>n :NERDTreeFind<cr>
-"
-"" update CWD based on NERDTree root
-"let g:NERDTreeChDirMode       = 2
+" Nerd-tree
+nmap <leader>n :NERDTreeFind<cr>
 
-"" Buffgator
-"" =========
-"
-"" Use the right side of the screen
-"let g:buffergator_viewport_split_policy = 'R'
-"" I want my own keymappings...
-"let g:buffergator_suppress_keymaps = 1
-"" Looper buffers
-"let g:buffergator_mru_cycle_loop = 1
-"
-"nmap <leader>b :BuffergatorOpen<cr>
-"nmap <leader>T :enew<cr>
+" update CWD based on NERDTree root
+let g:NERDTreeChDirMode       = 2
+
+" Buffgator
+" =========
+
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+" I want my own keymappings...
+let g:buffergator_suppress_keymaps = 1
+" Looper buffers
+let g:buffergator_mru_cycle_loop = 1
+map <leader>T :enew<cr>
