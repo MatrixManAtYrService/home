@@ -1,1 +1,1 @@
-sed -i 's/bg=dark/bg=light/' .vimrc && sed -i 's/bg=dark/bg=light/' .bashrc && gnome-terminal . --window-with-profile=Light && exit
+sed -i 's/bg=dark/bg=light/' .vimrc && sed -i 's/ansi-dark/ansi-light/' .bashrc && gnome-terminal . --window-with-profile=Light && exit

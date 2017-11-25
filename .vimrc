@@ -8,7 +8,7 @@ let mapleader = ","
 execute pathogen#infect()
 syntax on
 
-set bg=light
+set bg=dark
 set colorcolumn=120
 
 " Illuminate cursor crosshairs in the current buffer only

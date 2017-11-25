@@ -2,9 +2,12 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
-# colors
-eval `dircolors .dircolors/dircolors-solarized/dircolors.256dark`
-#source .mintty/mintty-colors-solarized/sol.dark
+# color stuff
+DIRCOLORS=".dircolors/dircolors-solarized/dircolors.ansi-dark"
+if [[ -f $DIRCOLORS ]] ; then
+    eval `dircolors $DIRCOLORS`
+fi
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
