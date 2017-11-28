@@ -6,12 +6,12 @@ if [[ ! -f $HOME/.ssh/config ]] ; then
     echo Creating .ssh/config
 /bin/cat <<EOM >$HOME/.ssh/config
 # personal
-Host github.com-matrixmanatyrservice
+Host github.com_matrixmanatyrservice
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/personal_rsa
 # work
-Host github.com-mattrixman
+Host github.com_mattrixman
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/work_rsa
@@ -27,6 +27,8 @@ gen()
     if [[ ! -f $FILE ]] ; then
         echo $1
         ssh-keygen -b 4096 -f $FILE -C $2
+        eval `ssh-agent -s`
+        ssh-add $FILE
     else
         echo $1 key already exists
     fi
