@@ -35,11 +35,12 @@ gen()
 # up personal github MatrixManAtYrService
 up()
 {
-    FILE="$HOME/.ssh/.${1}_is_on_${2}"
-    if [[ ! -f $FILE ]] ; then
+    FILE="$HOME/.ssh/${1}_rsa.pub"
+    BREADCRUMB="$HOME/.ssh/.${1}_is_on_${2}"
+    if [[ ! -f $BREADCRUMB ]] ; then
         echo Uploading $1 ssh key to $2 as $3
-        ssh-keyreg -p ${1}_rsa.pub -u $3 github
-        touch $FILE
+        ssh-keyreg -p $HOME/.ssh/${1}_rsa.pub -u $3 github
+        touch $BREADCRUMB
     else
         echo $1 key already uploaded
     fi
