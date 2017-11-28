@@ -6,14 +6,15 @@ if [[ ! -f $HOME/.ssh/config ]] ; then
     echo Creating .ssh/config
 /bin/cat <<EOM >$HOME/.ssh/config
 # personal
-Host github.com_matrixmanatyrservice
+Host MatrixManAtYrService.github.com
 	HostName github.com
-	User git
+    PreferredAuthentications publickey
 	IdentityFile ~/.ssh/personal_rsa
+
 # work
-Host github.com_mattrixman
+Host mattrixman.github.com
 	HostName github.com
-	User git
+    PreferredAuthentications publickey
 	IdentityFile ~/.ssh/work_rsa
 EOM
 else
@@ -55,6 +56,3 @@ up personal github MatrixManAtYrService
 gen work mattrixman
 
 up work github mattrixman
-
-
-
