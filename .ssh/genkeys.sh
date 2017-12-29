@@ -6,16 +6,18 @@ if [[ ! -f $HOME/.ssh/config ]] ; then
     echo Creating .ssh/config
 /bin/cat <<EOM >$HOME/.ssh/config
 # personal
-Host MatrixManAtYrService.github.com
-	HostName github.com
-    PreferredAuthentications publickey
-	IdentityFile ~/.ssh/personal_rsa
+Host MatrixMan-github
+    HostName github.com
+    User git
+    IdentityFile /home/matt/.ssh/personal_rsa
+    IdentitiesOnly yes
 
 # work
-Host mattrixman.github.com
-	HostName github.com
-    PreferredAuthentications publickey
-	IdentityFile ~/.ssh/work_rsa
+Host mattrixman-github
+    HostName github.com
+    User git
+    IdentityFile /home/matt/.ssh/work_rsa
+    IdentitiesOnly yes
 EOM
 else
     echo .ssh/config already exists
@@ -53,6 +55,12 @@ gen personal MatrixManAtYrService
 
 up personal github MatrixManAtYrService
 
+echo Now you can do things like:
+echo     git remote add origin git@MatrixMan-github:MatrixManAtYrService/projName.git
+
 gen work mattrixman
 
 up work github mattrixman
+
+echo Now you can do things like:
+echo     git remote add origin git@mattrixman-github:mattrixman/projName.git
