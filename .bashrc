@@ -23,6 +23,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # aliases
+alias xc="xclip -sel clip"
 alias lcmd="fc -ln -1 | sed 's/^\s*//'"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 

@@ -108,3 +108,9 @@ let g:buffergator_suppress_keymaps = 1
 " Looper buffers
 let g:buffergator_mru_cycle_loop = 1
 map <leader>T :enew<cr>
+
+" ghc-mod
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
