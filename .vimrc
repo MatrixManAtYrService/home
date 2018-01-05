@@ -8,8 +8,8 @@ let mapleader = ","
 execute pathogen#infect()
 syntax on
 
-set bg=dark
 set colorcolumn=120
+"set relativenumber
 
 " Illuminate cursor crosshairs in the current buffer only
 au WinLeave * set nocursorline nocursorcolumn
@@ -98,7 +98,7 @@ nmap <leader>n :NERDTreeFind<cr>
 " update CWD based on NERDTree root
 let g:NERDTreeChDirMode       = 2
 
-" Buffgator
+" Buffergator
 " =========
 
 " Use the right side of the screen
@@ -108,6 +108,8 @@ let g:buffergator_suppress_keymaps = 1
 " Looper buffers
 let g:buffergator_mru_cycle_loop = 1
 map <leader>T :enew<cr>
+
+nmap <leader>b :BuffergatorOpen<cr>
 
 " ghc-mod
 map <silent> tw :GhcModTypeInsert<CR>

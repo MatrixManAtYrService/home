@@ -1,9 +1,8 @@
-
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
 # color stuff
-DIRCOLORS=".dircolors/dircolors-solarized/dircolors.ansi-dark"
+DIRCOLORS=".dircolors/dircolors-solarized/dircolors.ansi-light"
 if [[ -f $DIRCOLORS ]] ; then
     eval `dircolors $DIRCOLORS`
 fi
