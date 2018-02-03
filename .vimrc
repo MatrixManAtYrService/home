@@ -110,3 +110,9 @@ let g:buffergator_mru_cycle_loop = 1
 map <leader>T :enew<cr>
 
 nmap <leader>b :BuffergatorOpen<cr>
+
+" ghc-mod
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
