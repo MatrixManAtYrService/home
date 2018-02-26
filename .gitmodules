@@ -8,7 +8,7 @@
 	path = .mintty/base16-mintty
 	url = https://github.com/iamthad/base16-mintty
 [submodule ".dircolors/dircolors-solarized"]
-	path = .dircolors/dircolors-solarized
+	path = .config/dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
