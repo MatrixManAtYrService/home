@@ -2,7 +2,7 @@
 [[ "$-" != *i* ]] && return
 
 # color stuff
-DIRCOLORS=".dircolors/dircolors-solarized/dircolors.ansi-light"
+DIRCOLORS=".config/dircolors/dircolors-solarized/dircolors.ansi-light"
 if [[ -f $DIRCOLORS ]] ; then
     eval `dircolors $DIRCOLORS`
 fi
