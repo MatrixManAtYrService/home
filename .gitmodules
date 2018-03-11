@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/vim-http"]
 	path = .vim/bundle/vim-http
 	url = https://github.com/nicwest/vim-http
+[submodule ".zsh/pure"]
+	path = .zsh/pure
+	url = https://github.com/sindresorhus/pure
