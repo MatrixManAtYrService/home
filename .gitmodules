@@ -43,6 +43,7 @@
 [submodule ".zsh/pure"]
 	path = .zsh/pure
 	url = https://github.com/sindresorhus/pure
+    ignore = dirty
 [submodule ".config/dircolors/dircolors-solarized"]
 	path = .config/dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
