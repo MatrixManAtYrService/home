@@ -20,7 +20,7 @@
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule ".gnome-terminal"]
-	path = .gnome-terminal
+	path = .config/gnome-terminal
 	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
 [submodule ".vim/bundle/vim-ipython"]
 	path = .vim/bundle/vim-ipython
@@ -43,3 +43,6 @@
 [submodule ".zsh/pure"]
 	path = .zsh/pure
 	url = https://github.com/sindresorhus/pure
+[submodule ".config/dircolors/dircolors-solarized"]
+	path = .config/dircolors/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git

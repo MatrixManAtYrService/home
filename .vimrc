@@ -26,6 +26,12 @@ endif
 let g:solarized_termtrans = 1
 colorscheme solarized
 
+if !empty($CONSOLE_THEME)
+    let &bg=$CONSOLE_THEME
+else
+    set bg=dark
+endif
+
 " Spacing stuff
 filetype plugin indent on
 set tabstop=4
