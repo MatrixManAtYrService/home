@@ -27,12 +27,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # create non-git-managed bashrc if it doesn't exist
 if [[ ! -f "${HOME}/.bashrc2" ]] ; then
-    cat > ${HOME}/.bashrc2 <<-EOF
-    # Unlike .bashrc, this file is not synced by git
-    # modifications will affect the local system only
+cat > ${HOME}/.bashrc2 <<-EOF
+# Unlike .bashrc, this file is not synced by git
+# modifications will affect the local system only
 
-    lighten
-    EOF
+lighten
+EOF
 fi
 
 source "${HOME}/.bashrc2"

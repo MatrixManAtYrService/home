@@ -8,11 +8,11 @@ PROMPT_ASYNC="$HOME/.zsh/pure/async"
 if [ -d "$PROMPT_DIR" ] ; then
     # If the pure submodule has been fetched
     # align the setup files with pure's expectations
-    if [ ! -f "$PROMPT_DIR/prompt_pure_setup" ] ; then
+    if [ ! -f "$PROMPT_SETUP" ] ; then
         cp -v "$PROMPT_SETUP_IN" "$PROMPT_SETUP"
     fi
     if [ ! -f "$PROMPT_ASYNC" ] ; then
-        cp -v "$PROMPT_ASYNC_IN" "$ASYNC_SETUP"
+        cp -v "$PROMPT_ASYNC_IN" "$PROMPT_ASYNC"
     fi
 
     # the set the path to pure
