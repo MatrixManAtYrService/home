@@ -64,8 +64,8 @@ cat > "${HOME}/.zshrc2" <<-EOF
 # Unlike .zshrc, this file is not synced by git
 # modifications will affect the local system only
 
-lighten
-#darken
+lighten_common  # lighten, but don't restart terminal
+#darken_common # darken, but don't restart terminal
 EOF
 fi
 

@@ -57,6 +57,9 @@ set splitright
 " Allow buffer switch away from unsaved
 set hidden
 
+" search for character under cursor
+:nnoremap <leader>z xhp/<C-R>-<CR>
+
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
