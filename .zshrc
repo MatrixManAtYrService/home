@@ -37,7 +37,7 @@ HISTFILE="$HOME/.zsh_history"
 
 setopt sharehistory # Share the same history between all shells
 
-fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
+fpath+=("$HOME/.zsh/pure/")
 autoload -U promptinit; promptinit
 prompt pure
 
