@@ -26,6 +26,12 @@ endif
 let g:solarized_termtrans = 1
 colorscheme solarized
 
+if !empty($CONSOLE_THEME)
+    let &bg=$CONSOLE_THEME
+else
+    set bg=dark
+endif
+
 " Spacing stuff
 filetype plugin indent on
 set tabstop=4
@@ -50,6 +56,9 @@ set splitright
 
 " Allow buffer switch away from unsaved
 set hidden
+
+" search for character under cursor
+:nnoremap <leader>z xhp/<C-R>-<CR>
 
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
