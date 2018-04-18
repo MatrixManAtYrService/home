@@ -1,0 +1,1 @@
+sudo ip route add 10.249.20.139 via 10.250.0.1 dev tun1
