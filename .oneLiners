@@ -1,1 +1,5 @@
 sudo ip route add 10.249.20.139 via 10.250.0.1 dev tun1
+cd ~/Repo/schema-tool && git stash && git fetch origin && curl https://dev1.dev.clover.com/cos/v1/gsha | jq .\"schema-tool\".\"git.schema-tool.commit.id.abbrev\" | xargs git checkout
+cd ~/Repo/core        && git stash && git fetch origin && curl https://dev1.dev.clover.com/cos/v1/gsha | jq '.core["git.core.commit.id.abbrev"]' | xargs git checkout
+cd ~/Repo/server      && git stash && git fetch origin && curl https://dev1.dev.clover.com/cos/v1/gsha | jq '.server["git.server.commit.id.abbrev"]' | xargs git checkout
+cd ~/Repo/web         && git stash && git fetch origin && curl https://dev1.dev.clover.com/gsha | jq .web.\"git.web.commit.id.abbrev\" | xargs git checkout

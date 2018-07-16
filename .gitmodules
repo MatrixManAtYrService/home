@@ -47,3 +47,9 @@
 [submodule ".config/dircolors/dircolors-solarized"]
 	path = .config/dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule ".vim/bundle/vim-pipe"]
+	path = .vim/bundle/vim-pipe
+	url = https://github.com/vim-scripts/vim-pipe
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular

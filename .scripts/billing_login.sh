@@ -12,17 +12,17 @@ maybe_exit() {
     fi
 }
 
-cos_user_default="$USER"
-cos_base_url_default="https://dev1.dev.clover.com"
+billing_user_default="$USER"
+billing_base_url_default="https://billingtest1.dev.clover.com"
 
 usage() {
     echo "This script will log your user into COS and print the cookie on the last output line"
     echo
-    echo "    $ $(basename $0) -u <cos_user> -s <cos_base_url>"
+    echo "    $ $(basename $0) -u <billing_user> -s <billing_base_url>"
     echo
     echo " Default Values"
-    echo "     cos_user: $cos_user_default"
-    echo "     cos_base_url: $cos_base_url_default"
+    echo "     billing_user: $billing_user_default"
+    echo "     billing_base_url: $billing_base_url_default"
     echo
     echo " If sourced, it will put the cookie in \$COOKIE" too
     echo
@@ -32,36 +32,36 @@ usage() {
 
 # if script was sourced, read params from variables
 if [[ "$sourced" = true ]] ; then
-    if [ -z ${cos_base_url+x} ]; then
-        echo "cos_base_url is unset"
-        echo "example value: " $cos_base_url_default
-        echo -n "cos_base_url: "
-        read cos_base_url
-        cos_base_url=${cos_base_url:-$cos_base_url_default}
+    if [ -z ${billing_base_url+x} ]; then
+        echo "billing_base_url is unset"
+        echo "example value: " $billing_base_url_default
+        echo -n "billing_base_url: "
+        read billing_base_url
+        billing_base_url=${billing_base_url:-$billing_base_url_default}
     else
-        echo "cos_base_url: $cos_base_url"
+        echo "billing_base_url: $billing_base_url"
     fi
 
-    if [ -z ${cos_user+x} ]; then
-        echo "cos_user is unset"
-        echo -n  "cos_user: "
-        read cos_user
-        cos_user=${cos_user:-$cos_user_default}
+    if [ -z ${billing_user+x} ]; then
+        echo "billing_user is unset"
+        echo -n  "billing_user: "
+        read billing_user
+        billing_user=${billing_user:-$billing_user_default}
     else
-        echo "cos_user: $cos_user"
+        echo "billing_user: $billing_user"
     fi
 
 # otherwise examine parameters
 else
-    cos_user="$cos_user_default"
-    cos_base_url="$cos_base_url_default"
+    billing_user="$billing_user_default"
+    billing_base_url="$billing_base_url_default"
     while getopts "u:s:h" opt; do
         case ${opt} in
             u )
-                cos_user="$OPTARG"
+                billing_user="$OPTARG"
                 ;;
             s )
-                cos_base_url="$OPTARG"
+                billing_base_url="$OPTARG"
                 ;;
             h)
                 usage
@@ -74,18 +74,18 @@ else
         done
         shift $((OPTIND -1))
 
-    echo "Server: $cos_base_url"
-    echo "User: $cos_user"
+    echo "Server: $billing_base_url"
+    echo "User: $billing_user"
     fi
 
-    if [ -z ${cos_pass+x} ]; then
-        echo -n "Password: "; read -s cos_pass;
+    if [ -z ${billing_pass+x} ]; then
+        echo -n "Password: "; read -s billing_pass;
     fi
 
-    resp=$(curl -i -s -S "$cos_base_url"/cos/v1/dashboard/internal/login -X POST \
+    resp=$(curl -i -s -S "$billing_base_url"/billing/v1/login -X POST \
         -H "Content-Type: application/json" \
         -H 'Accept: application/json, text/javascript, */*; q=0.01' \
-        -H 'Connection: keep-alive' -d '{"username":"'$cos_user'","password":"'$cos_pass'"}')
+        -H 'Connection: keep-alive' -d '{"username":"'$billing_user'","password":"'$billing_pass'"}')
     COOKIE="$(echo "$resp" | grep set-cookie | awk '{$1=""; print $0}')" ;\
 
     if echo "$resp" | grep OK ; then

@@ -5,6 +5,8 @@ PROMPT_SETUP="$HOME/.zsh/pure/prompt_pure_setup"
 PROMPT_ASYNC_IN="$HOME/.zsh/pure/async.zsh"
 PROMPT_ASYNC="$HOME/.zsh/pure/async"
 
+source ~/.common
+
 if [ -d "$PROMPT_DIR" ] ; then
     # If the pure submodule has been fetched
     # align the setup files with pure's expectations
@@ -38,7 +40,7 @@ export EDITOR="$VISUAL"
 CONSOLE_THEME="dark" # override this in .zshrc2
 
 autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd "V" edit-command-line
+bindkey -M vicmd "D" edit-command-line
 
 # custom aliases
 alias xc="xclip -sel clip"

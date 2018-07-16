@@ -8,7 +8,7 @@ interval=10
 log=db_rw.json
 
 login="-uroot -ptest"
-db="-Dfeb27"
+db="-Dapr9"
 
 per_second(){
     echo "($1 - $2) / $interval" | bc
