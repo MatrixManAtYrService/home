@@ -13,7 +13,7 @@ maybe_exit() {
 }
 
 billing_user_default="$USER"
-billing_base_url_default="https://billingtest1.dev.clover.com"
+billing_base_url_default="http://localhost:8950"
 
 usage() {
     echo "This script will log your user into COS and print the cookie on the last output line"
