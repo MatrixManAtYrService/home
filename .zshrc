@@ -5,7 +5,7 @@ PROMPT_SETUP="$HOME/.zsh/pure/prompt_pure_setup"
 PROMPT_ASYNC_IN="$HOME/.zsh/pure/async.zsh"
 PROMPT_ASYNC="$HOME/.zsh/pure/async"
 
-source ~/.common
+#source ~/.common
 
 if [ -d "$PROMPT_DIR" ] ; then
     # If the pure submodule has been fetched
@@ -39,8 +39,9 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 CONSOLE_THEME="dark" # override this in .zshrc2
 
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd "D" edit-command-line
+
+#autoload edit-command-line; zle -N edit-command-line
+#bindkey -M vicmd "D" edit-command-line
 
 # custom aliases
 alias xc="xclip -sel clip"
@@ -48,8 +49,8 @@ alias lcmd="fc -ln -1 | sed 's/^\s*//'"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 
 # hist stuff
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE="$HOME/.zsh_history"
 
 setopt sharehistory # Share the same history between all shells
@@ -75,5 +76,19 @@ lighten_common  # lighten, but don't restart terminal
 EOF
 fi
 
-source  "${HOME}/.zshrc2"
+# https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+vi-search-fix() {
+zle vi-cmd-mode
+zle .vi-history-search-backward
+}
+autoload vi-search-fix
+zle -N vi-search-fix
+bindkey -M viins '\e/' vi-search-fix
 
+# https://superuser.com/questions/516474/escape-not-idempotent-in-zshs-vi-emulation
+noop () { }
+zle -N noop
+bindkey -M vicmd '\e' noop
+
+
+source  "${HOME}/.zshrc2"
