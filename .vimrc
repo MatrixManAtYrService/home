@@ -46,10 +46,28 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
 " Split Navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+
+" move split
+nnoremap <leader>wmh <C-W>H
+nnoremap <leader>wmj <C-W>J
+nnoremap <leader>wmk <C-W>K
+nnoremap <leader>wml <C-W>L
+
+" move cursor
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <leader>wh <C-W>h
+nnoremap <leader>wj <C-W>j
+nnoremap <leader>wk <C-W>k
+nnoremap <leader>wl <C-W>l
+
+
+
+nnoremap <C-m> dd
+nnoremap <M-l> dd
+nnoremap <M-l> ifoo<esc>
 
 set splitbelow
 set splitright
@@ -125,3 +143,6 @@ map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
+
+" cSyntaxAfter
+autocmd! FileType java call CSyntaxAfter()

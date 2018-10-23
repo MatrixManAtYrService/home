@@ -48,8 +48,8 @@ alias lcmd="fc -ln -1 | sed 's/^\s*//'"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 
 # hist stuff
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE="$HOME/.zsh_history"
 
 setopt sharehistory # Share the same history between all shells
@@ -74,6 +74,15 @@ lighten_common  # lighten, but don't restart terminal
 #darken_common # darken, but don't restart terminal
 EOF
 fi
+
+# accept `foo bitch` as `sudo foo`
+my-accept-line () {
+  if [[ "$BUFFER" == *" bitch" ]]; then
+    BUFFER="sudo ${BUFFER% bitch}"
+  fi
+  zle .accept-line
+}
+zle -N accept-line my-accept-line
 
 source  "${HOME}/.zshrc2"
 
