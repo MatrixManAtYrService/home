@@ -47,11 +47,19 @@ let &t_te.="\e[0 q"
 
 " Split Navigation
 
+" new split
+nnoremap <leader>wv :vsplit<CR>
+nnoremap <leader>ws :split<CR>
+
 " move split
 nnoremap <leader>wmh <C-W>H
 nnoremap <leader>wmj <C-W>J
 nnoremap <leader>wmk <C-W>K
 nnoremap <leader>wml <C-W>L
+" use i3 config to map <C-S-H> to <C-W>H
+" use i3 config to map <C-S-J> to <C-W>J
+" use i3 config to map <C-S-K> to <C-W>K
+" use i3 config to map <C-S-L> to <C-W>L
 
 " move cursor
 nnoremap <C-h> <C-W>h
@@ -63,13 +71,7 @@ nnoremap <leader>wj <C-W>j
 nnoremap <leader>wk <C-W>k
 nnoremap <leader>wl <C-W>l
 
-
-
-nnoremap <C-m> dd
-nnoremap <M-l> dd
-nnoremap <M-l> ifoo<esc>
-
-" Split navigation from terminal
+" Split navigation from neovim terminal
 if has('nvim')
     tnoremap <C-J> <C-\><C-n><C-W><C-J>
     tnoremap <C-K> <C-\><C-n><C-W><C-K>
@@ -84,8 +86,9 @@ set splitright
 " Allow buffer switch away from unsaved
 set hidden
 
-" search for character under cursor
+" search for character under cursro
 :nnoremap <leader>z xhp/<C-R>-<CR>
+:nnoremap <leader>Z xhp?<C-R>-<CR>
 
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
