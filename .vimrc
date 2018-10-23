@@ -69,6 +69,15 @@ nnoremap <C-m> dd
 nnoremap <M-l> dd
 nnoremap <M-l> ifoo<esc>
 
+" Split navigation from terminal
+if has('nvim')
+    tnoremap <C-J> <C-\><C-n><C-W><C-J>
+    tnoremap <C-K> <C-\><C-n><C-W><C-K>
+    tnoremap <C-L> <C-\><C-n><C-W><C-L>
+    tnoremap <C-H> <C-\><C-n><C-W><C-H>
+    tnoremap <C-Q> <C-\><C-n>
+endif
+
 set splitbelow
 set splitright
 
@@ -144,5 +153,6 @@ map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
 
-" cSyntaxAfter
-autocmd! FileType java call CSyntaxAfter()
+" edit vimrc
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>

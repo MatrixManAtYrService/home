@@ -5,7 +5,7 @@ PROMPT_SETUP="$HOME/.zsh/pure/prompt_pure_setup"
 PROMPT_ASYNC_IN="$HOME/.zsh/pure/async.zsh"
 PROMPT_ASYNC="$HOME/.zsh/pure/async"
 
-source ~/.common
+#source ~/.common
 
 if [ -d "$PROMPT_DIR" ] ; then
     # If the pure submodule has been fetched
@@ -39,8 +39,8 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 CONSOLE_THEME="dark" # override this in .zshrc2
 
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd "D" edit-command-line
+#autoload edit-command-line; zle -N edit-command-line
+#bindkey -M vicmd "D" edit-command-line
 
 # custom aliases
 alias xc="xclip -sel clip"
@@ -64,6 +64,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+export RVM_DIR="$HOME/.rvm"
+[ -s "$RVM_DIR/scripts/rvm" ] && source /home/matt/.rvm/scripts/rvm
+
 # create non-git-managed zshrc if it doesn't exist
 if [[ ! -f "${HOME}/.zshrc2" ]] ; then
 cat > "${HOME}/.zshrc2" <<-EOF
@@ -75,14 +79,62 @@ lighten_common  # lighten, but don't restart terminal
 EOF
 fi
 
-# accept `foo bitch` as `sudo foo`
-my-accept-line () {
-  if [[ "$BUFFER" == *" bitch" ]]; then
-    BUFFER="sudo ${BUFFER% bitch}"
+# Cursor shape switch based on mode:
+# https://unix.stackexchange.com/questions/547/make-my-zsh-prompt-show-mode-in-vi-mode
+KEYTIMEOUT=5
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
   fi
-  zle .accept-line
 }
-zle -N accept-line my-accept-line
+zle -N zle-keymap-select
+
+# Use beam shape cursor for each new prompt.
+make_beam() {
+   echo -ne '\e[5 q'
+}
+
+# Do so now
+make_beam
+
+# And at the start of each prompt
+autoload -U add-zsh-hook
+add-zsh-hook preexec make_beam
+
+# https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+vi-search-fix() {
+zle vi-cmd-mode
+zle .vi-history-search-backward
+}
+autoload vi-search-fix
+zle -N vi-search-fix
+bindkey -M viins '\e/' vi-search-fix
+
+# https://superuser.com/questions/516474/escape-not-idempotent-in-zshs-vi-emulation
+noop () { }
+zle -N noop
+bindkey -M vicmd '\e' noop
+
+# https://github.com/denysdovhan/spaceship-prompt/issues/91
+bindkey "^?" backward-delete-char
+
+# replace lines like "make me a sandwich bitch"
+#          with "sudo make me a sandwich"
+bitch() {
+if [[ "$BUFFER" == *" bitch" ]]; then
+    BUFFER="sudo ${BUFFER% bitch}"
+fi
+zle .accept-line
+}
+
+zle -N accept-line bitch
 
 source  "${HOME}/.zshrc2"
-

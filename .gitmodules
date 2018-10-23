@@ -56,3 +56,9 @@
 [submodule ".vim/bundle/haskell-vim"]
 	path = .vim/bundle/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim
+[submodule ".config/gnome-terminal-colors-solarized"]
+	path = .config/gnome-terminal-colors-solarized
+	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
+[submodule ".vim/bundle/vim-javascript"]
+	path = .vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
