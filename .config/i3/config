@@ -67,10 +67,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # non-i3, relay commands to vim:
-bindsym --release Control+Shift+h exec --no-startup-id xdotool key --clearmodifiers comma w m h
-bindsym --release Control+Shift+j exec --no-startup-id xdotool key --clearmodifiers comma w m j
-bindsym --release Control+Shift+k exec --no-startup-id xdotool key --clearmodifiers comma w m k
-bindsym --release Control+Shift+l exec --no-startup-id xdotool key --clearmodifiers comma w m l
+bindsym --release Control+Shift+h exec --no-startup-id xdotool key --clearmodifiers space w m h
+bindsym --release Control+Shift+j exec --no-startup-id xdotool key --clearmodifiers space w m j
+bindsym --release Control+Shift+k exec --no-startup-id xdotool key --clearmodifiers space w m k
+bindsym --release Control+Shift+l exec --no-startup-id xdotool key --clearmodifiers space w m l
 
 # split along vertical crease
 bindsym $mod+v split h

@@ -5,8 +5,6 @@ PROMPT_SETUP="$HOME/.zsh/pure/prompt_pure_setup"
 PROMPT_ASYNC_IN="$HOME/.zsh/pure/async.zsh"
 PROMPT_ASYNC="$HOME/.zsh/pure/async"
 
-#source ~/.common
-
 if [ -d "$PROMPT_DIR" ] ; then
     # If the pure submodule has been fetched
     # align the setup files with pure's expectations
@@ -26,7 +24,6 @@ else
 fi
 
 # color stuff
-source "$HOME/.config/colorshift.sh"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -37,7 +34,6 @@ set -o vi
 alias vi=vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
-CONSOLE_THEME="dark" # override this in .zshrc2
 
 #autoload edit-command-line; zle -N edit-command-line
 #bindkey -M vicmd "D" edit-command-line
@@ -64,7 +60,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 export RVM_DIR="$HOME/.rvm"
 [ -s "$RVM_DIR/scripts/rvm" ] && source /home/matt/.rvm/scripts/rvm
 
@@ -73,9 +68,6 @@ if [[ ! -f "${HOME}/.zshrc2" ]] ; then
 cat > "${HOME}/.zshrc2" <<-EOF
 # Unlike .zshrc, this file is not synced by git
 # modifications will affect the local system only
-
-lighten_common  # lighten, but don't restart terminal
-#darken_common # darken, but don't restart terminal
 EOF
 fi
 
@@ -137,4 +129,18 @@ zle .accept-line
 
 zle -N accept-line bitch
 
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-history-substring-search
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# colorshift stuff
+alias lighten='source ~/.config/colorshift/lighten.sh'
+alias darken='source ~/.config/colorshift/darken.sh'
+source $(cat ~/.config/colorshift/target_file.txt) &> /dev/null
+
+# apply non-git-synced modifications
 source  "${HOME}/.zshrc2"

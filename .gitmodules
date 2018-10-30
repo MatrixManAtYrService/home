@@ -47,9 +47,6 @@
 [submodule ".config/dircolors/dircolors-solarized"]
 	path = .config/dircolors/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
-[submodule ".vim/bundle/vim-pipe"]
-	path = .vim/bundle/vim-pipe
-	url = https://github.com/vim-scripts/vim-pipe
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular
@@ -62,3 +59,9 @@
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh/zsh-history-substring-search"]
+	path = .zsh/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
