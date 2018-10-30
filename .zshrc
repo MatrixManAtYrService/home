@@ -155,6 +155,8 @@ source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+# auto-cd
+setopt auto_cd
 
 
 # colorshift stuff
