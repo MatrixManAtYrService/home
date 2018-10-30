@@ -2,7 +2,6 @@
 [[ "$-" != *i* ]] && return
 
 # color stuff
-source "$HOME/.config/colorshift.sh"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -34,6 +33,11 @@ cat > ${HOME}/.bashrc2 <<-EOF
 lighten
 EOF
 fi
+
+# colorshift stuff
+alias lighten='source ~/.config/colorshift/lighten.sh'
+alias darken='source ~/.config/colorshift/darken.sh'
+source $(cat ~/.config/colorshift/target_file.txt) &> /dev/null
 
 source "${HOME}/.bashrc2"
 
