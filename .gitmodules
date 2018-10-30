@@ -65,3 +65,6 @@
 [submodule ".zsh/zsh-history-substring-search"]
 	path = .zsh/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule ".config/colorshift"]
+	path = .config/colorshift
+	url = https://github.com/MatrixManAtYrService/colorshift

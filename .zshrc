@@ -131,11 +131,31 @@ zle -N accept-line bitch
 
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey -M viins '^[[2~' autosuggest-execute
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+	end-of-line
+	vi-end-of-line
+	vi-add-eol
+)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
+	forward-char
+	vi-forward-char
+	forward-word
+	emacs-forward-word
+	vi-forward-word
+	vi-forward-word-end
+	vi-forward-blank-word
+	vi-forward-blank-word-end
+	vi-find-next-char
+	vi-find-next-char-skip
+)
 
 # zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+
 
 # colorshift stuff
 alias lighten='source ~/.config/colorshift/lighten.sh'
