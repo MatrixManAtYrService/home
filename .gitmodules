@@ -68,3 +68,6 @@
 [submodule ".config/colorshift"]
 	path = .config/colorshift
 	url = https://github.com/MatrixManAtYrService/colorshift
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

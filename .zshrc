@@ -132,6 +132,8 @@ zle -N accept-line bitch
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey -M viins '^[[2~' autosuggest-execute
+bindkey -M viins '^[f' vi-forward-blank-word
+bindkey -M viins '^[w' vi-forward-word
 ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
 	end-of-line
 	vi-end-of-line
@@ -153,7 +155,12 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 # zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd '^[[5~' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd '^[[6~' history-substring-search-down
+
+# zsh-syntax-highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # auto-cd
 setopt auto_cd
