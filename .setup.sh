@@ -13,3 +13,10 @@ apt-get install silversearcher-ag
 
 # neovim
 sudo apt-get install neovim
+
+# squawk
+sudo apt-get install tcl tcllib libsqlite3-tcl
+git clone https://github.com/dbohdan/sqawk
+
+# datamash
+sudo apt-get install datamash

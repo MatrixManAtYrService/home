@@ -165,11 +165,15 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # auto-cd
 setopt auto_cd
 
-
 # colorshift stuff
 alias lighten='source ~/.config/colorshift/lighten.sh'
 alias darken='source ~/.config/colorshift/darken.sh'
 source $(cat ~/.config/colorshift/target_file.txt) &> /dev/null
 
+# sql stuff
+source ~/.tb2j.zsh
+
 # apply non-git-synced modifications
 source  "${HOME}/.zshrc2"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
