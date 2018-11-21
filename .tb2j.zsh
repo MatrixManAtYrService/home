@@ -50,7 +50,15 @@ EOF
 # for use in WHERE clauses
 tb2lst(){
     echo -n "("
-    tail -n +2 - | paste -sd "," | tr -d "\n"
+    tail -n +2 - | paste -sd, | tr -d "\n"
+    echo ")"
+}
+
+# like above, but quoted
+#   ("foo", "bar", "baz")
+tb2qlst(){
+    echo -n "("
+    tail -n +2 - |sed "s/.*/\"&\"/" | paste -sd, | tr -d "\n"
     echo ")"
 }
 
