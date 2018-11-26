@@ -1,9 +1,9 @@
 mysql_query() {
     if [ -t 1 ]
     then
-        mysql --column-names -u$1 -p$2 -h$3 -A -D$4 -e "$5;" 2> >(grep -v password 1>&2)
+        mysql --column-names -u$1 -p$2 -h$3 -A -e "use $4; $5;" 2> >(grep -v password 1>&2)
     else
-        mysql --column-names -u$1 -p$2 -h$3 -A -D$4 -e "$5;" 2> >(grep -v password 1>&2) | tail -n +1
+        mysql --column-names -u$1 -p$2 -h$3 -A -e "use $4; $5;" 2> >(grep -v password 1>&2) | tail -n +1
     fi
 }
 
