@@ -82,7 +82,7 @@ else
         echo -n "Password: "; read -s billing_pass;
     fi
 
-    resp=$(curl -i -s -S "$billing_base_url"/billing/batch/v1/login -X POST \
+    resp=$(curl -i -s -S "$billing_base_url"/billing/v1/login -X POST \
         -H "Content-Type: application/json" \
         -H 'Accept: application/json, text/javascript, */*; q=0.01' \
         -H 'Connection: keep-alive' -d '{"username":"'$billing_user'","password":"'$billing_pass'"}')
