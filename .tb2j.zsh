@@ -1,15 +1,82 @@
-mysql_query() {
-    if [ -t 1 ]
+set_query_output_type() {
+    if [[ "$1" =~ -.* ]]
     then
-        mysql --column-names -u$1 -p$2 -h$3 -A -e "use $4; $5;" 2> >(grep -v password 1>&2)
+        case "$1" in
+            "-jr")
+               export QUERY_OUTPUT="rows"
+                ;;
+            "-jc")
+               export QUERY_OUTPUT="columns"
+                ;;
+            *)
+               export QUERY_OUTPUT="table"
+                ;;
+        esac
+        shift 1
     else
-        mysql --column-names -u$1 -p$2 -h$3 -A -e "use $4; $5;" 2> >(grep -v password 1>&2) | tail -n +1
+        export QUERY_OUTPUT="table"
     fi
 }
 
+mysql_query_param() {
+    export MYSQL_PWD="$2"
+    mysql "-u$1" "-h$3" -e "use $4; $5;"
+}
+
+mysql_query_param_pipe_out() {
+    export MYSQL_PWD="$2"
+    mysql "-u$1" "-h$3" -e "use $4; $5;" -N
+}
+
+mysql_query_pipe_in_out() {
+    read sql
+    export MYSQL_PWD="$2"
+    mysql -u"$1" -h"$3" -e "use $4; $sql;" -N
+    echo foo
+}
+
+mysql_query_pipe_in() {
+    read sql
+    export MYSQL_PWD="$2"
+
+    # convince mysql that stdin isn't a pipe so that we get the table drawings
+    script --return -qc "mysql -u\"$1\" -h\"$3\" -e \"use $4; $sql;\"" /dev/null 
+}
+
+mysql_query() {
+    user="$1"
+    pass="$2"
+    host="$3"
+    db="$4"
+    query="$5"
+
+    echo $QUERY_OUTPUT
+
+    if [ -t 0 ]
+    then
+        if [ -t 1 ]
+        then
+            mysql_query_param "$user" "$pass" "$host" "$db" "$query"
+        else
+            mysql_query_param_pipe_out "$user" "$pass" "$host" "$db" "$query"
+        fi
+    else
+        if [ -t 1 ]
+        then
+            mysql_query_pipe_in "$user" "$pass" "$host" "$db"
+        else
+            mysql_query_pipe_in_out "$user" "$pass" "$host" "$db"
+        fi
+    fi
+}
+
+q() {
+    echo $*
+}
+
 # add one of these per db-of-intereset to ~/.zshrc2
-#    mydb() {
-#        mysql_query user 'pass' host db "$*;"
+#    meta0() {
+#    mysql_query root test 10.249.253.118 meta0 "$*"
 #    }
 #
 
