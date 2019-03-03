@@ -35,8 +35,8 @@ alias vi=vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-#autoload edit-command-line; zle -N edit-command-line
-#bindkey -M vicmd "D" edit-command-line
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd E edit-command-line
 
 # custom aliases
 alias xc="xclip -sel clip"
@@ -131,9 +131,9 @@ zle -N accept-line bitch
 
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey -M viins '^[[2~' autosuggest-execute
-bindkey -M viins '^[f' vi-forward-blank-word
+bindkey -M viins '^[[2~' autosuggest-execute # insert key
 bindkey -M viins '^[w' vi-forward-word
+bindkey -M viins '^[e' vi-forward-blank-word
 ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
 	end-of-line
 	vi-end-of-line
@@ -172,6 +172,9 @@ source $(cat ~/.config/colorshift/target_file.txt) &> /dev/null
 
 # sql stuff
 source ~/.tb2j.zsh
+
+# allow multiline commands that start with comments (for easier history searching)
+set -k
 
 # apply non-git-synced modifications
 source  "${HOME}/.zshrc2"

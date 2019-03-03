@@ -86,12 +86,12 @@ else
         -H "Content-Type: application/json" \
         -H 'Accept: application/json, text/javascript, */*; q=0.01' \
         -H 'Connection: keep-alive' -d '{"username":"'$cos_user'","password":"'$cos_pass'"}')
-    COOKIE="$(echo "$resp" | grep set-cookie | awk '{$1=""; print $0}')" ;\
+
+    COOKIE="$(echo "$resp" | grep set-cookie | awk '{$1=""; print $0}' | tr -d '\r' | xargs echo -n )"
 
     if echo "$resp" | grep OK ; then
-        echo "Got a cookie!"
-        echo " \$COOKIE="
-        echo "$COOKIE"
+        echo "Got a cookie:"
+        echo "COOKIE='${COOKIE}'"
     else
         echo "Something went wrong, got:"
         echo "$resp" | sed 's/^/    /'

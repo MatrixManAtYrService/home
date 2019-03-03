@@ -1,38 +1,45 @@
-set_query_output_type() {
+
+remove_param() {
+    echo "$*" | sed 's#[-a-zA-Z0-9]* ##'
+}
+
+set_query_and_output_type() {
     if [[ "$1" =~ -.* ]]
     then
         case "$1" in
             "-jr")
                export QUERY_OUTPUT="rows"
+               export QUERY=$(remove_param "$*")
                 ;;
             "-jc")
                export QUERY_OUTPUT="columns"
+               export QUERY=$(remove_param "$*")
                 ;;
             *)
                export QUERY_OUTPUT="table"
+               export QUERY="$*"
                 ;;
         esac
-        shift 1
     else
         export QUERY_OUTPUT="table"
+        export QUERY="$*"
     fi
 }
 
 mysql_query_param() {
     export MYSQL_PWD="$2"
-    mysql "-u$1" "-h$3" -e "use $4; $5;"
+    mysql "-u$1" "-h$3" "-P$4" -e "use $5; $6;"
 }
 
 mysql_query_param_pipe_out() {
     export MYSQL_PWD="$2"
-    mysql "-u$1" "-h$3" -e "use $4; $5;" -N
+    mysql "-u$1" "-h$3" "-P$4" -e "use $5; $6;" -N
 }
 
 mysql_query_pipe_in_out() {
     read sql
     export MYSQL_PWD="$2"
-    mysql -u"$1" -h"$3" -e "use $4; $sql;" -N
-    echo foo
+    mysql -u"$1" -h"$3" "-P$4" -e "use $5; $sql;" -N
 }
 
 mysql_query_pipe_in() {
@@ -40,7 +47,7 @@ mysql_query_pipe_in() {
     export MYSQL_PWD="$2"
 
     # convince mysql that stdin isn't a pipe so that we get the table drawings
-    script --return -qc "mysql -u\"$1\" -h\"$3\" -e \"use $4; $sql;\"" /dev/null 
+    script --return -qc "mysql -u\"$1\" -h\"$3\" \"-P$4\" -e \"use $5; $sql;\"" /dev/null
 }
 
 mysql_query() {
@@ -48,26 +55,27 @@ mysql_query() {
     pass="$2"
     host="$3"
     db="$4"
-    query="$5"
-
-    echo $QUERY_OUTPUT
+    port="${5:-3306}"
 
     if [ -t 0 ]
     then
         if [ -t 1 ]
         then
-            mysql_query_param "$user" "$pass" "$host" "$db" "$query"
+            mysql_query_param "$user" "$pass" "$host" "$port" "$db" "$QUERY"
         else
-            mysql_query_param_pipe_out "$user" "$pass" "$host" "$db" "$query"
+            mysql_query_param_pipe_out "$user" "$pass" "$host" "$port" "$db" "$QUERY"
         fi
     else
         if [ -t 1 ]
         then
-            mysql_query_pipe_in "$user" "$pass" "$host" "$db"
+            mysql_query_pipe_in "$user" "$pass" "$host" "$port" "$db"
         else
-            mysql_query_pipe_in_out "$user" "$pass" "$host" "$db"
+            mysql_query_pipe_in_out "$user" "$pass" "$host" "$port" "$db"
         fi
     fi
+
+    unset QUERY
+    unset QUERY_OUTPUT
 }
 
 q() {
@@ -76,6 +84,7 @@ q() {
 
 # add one of these per db-of-intereset to ~/.zshrc2
 #    meta0() {
+#    set_query_output_type $*
 #    mysql_query root test 10.249.253.118 meta0 "$*"
 #    }
 #
@@ -128,4 +137,3 @@ tb2qlst(){
     tail -n +2 - |sed "s/.*/\"&\"/" | paste -sd, | tr -d "\n"
     echo ")"
 }
-

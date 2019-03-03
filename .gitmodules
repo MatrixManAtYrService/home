@@ -74,3 +74,9 @@
 [submodule ".zsh/fzf"]
 	path = .zsh/fzf
 	url = https://github.com/junegunn/fzf
+[submodule ".vim/bundle/vim-polyglot"]
+	path = .vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule ".vim/bundle/vim-yaml-folds"]
+	path = .vim/bundle/vim-yaml-folds
+	url = https://github.com/pedrohdz/vim-yaml-folds
