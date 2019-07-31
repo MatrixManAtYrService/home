@@ -126,7 +126,7 @@ EOF
 # for use in WHERE clauses
 tb2lst(){
     echo -n "("
-    tail -n +2 - | paste -sd, | tr -d "\n"
+    paste -sd, | tr -d "\n"
     echo ")"
 }
 
@@ -134,6 +134,6 @@ tb2lst(){
 #   ("foo", "bar", "baz")
 tb2qlst(){
     echo -n "("
-    tail -n +2 - |sed "s/.*/\"&\"/" | paste -sd, | tr -d "\n"
+    sed "s/.*/\"&\"/" | paste -sd, | tr -d "\n"
     echo ")"
 }
