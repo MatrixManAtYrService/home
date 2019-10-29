@@ -180,3 +180,12 @@ set -k
 source  "${HOME}/.zshrc2"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# easy motion
+EASY_MOTION_PLUGIN="${HOME}/.zsh/zsh-easy-motion/easy_motion.plugin.zsh"
+if [ -f $EASY_MOTION_PLUGIN ]
+then
+    echo 'bindkey initialized'
+    source $EASY_MOTION_PLUGIN
+    bindkey -M vicmd ' ' vi-easy-motion
+fi

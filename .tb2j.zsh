@@ -68,7 +68,8 @@ mysql_query() {
     else
         if [ -t 1 ]
         then
-            mysql_query_pipe_in "$user" "$pass" "$host" "$port" "$db"
+            #mysql_query_pipe_in "$user" "$pass" "$host" "$port" "$db"
+            mysql_query_param "$user" "$pass" "$host" "$port" "$db" "$QUERY"
         else
             mysql_query_pipe_in_out "$user" "$pass" "$host" "$port" "$db"
         fi

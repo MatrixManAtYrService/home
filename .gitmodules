@@ -80,3 +80,15 @@
 [submodule ".vim/bundle/vim-yaml-folds"]
 	path = .vim/bundle/vim-yaml-folds
 	url = https://github.com/pedrohdz/vim-yaml-folds
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/flyingmachine/emacs-for-clojure/
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule ".zsh/zsh-easy-motion"]
+	path = .zsh/zsh-easy-motion
+	url = https://github.com/IngoHeimbach/zsh-easy-motion
