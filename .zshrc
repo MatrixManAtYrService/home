@@ -42,6 +42,8 @@ bindkey -M vicmd E edit-command-line
 alias xc="xclip -sel clip"
 alias lcmd="fc -ln -1 | sed 's/^\s*//'"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
+alias gr='git rev-parse --show-toplevel'
+alias cdgr='cd $(git rev-parse --show-toplevel)'
 
 # hist stuff
 HISTSIZE=10000
@@ -165,6 +167,14 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # auto-cd
 setopt auto_cd
 
+# easy motion
+EASY_MOTION_PLUGIN="${HOME}/.zsh/zsh-easy-motion/easy_motion.plugin.zsh"
+if [ -f $EASY_MOTION_PLUGIN ]
+then
+    source $EASY_MOTION_PLUGIN
+    bindkey -M vicmd $'\t' vi-easy-motion
+fi
+
 # colorshift stuff
 alias lighten='source ~/.config/colorshift/lighten.sh'
 alias darken='source ~/.config/colorshift/darken.sh'
@@ -181,11 +191,3 @@ source  "${HOME}/.zshrc2"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# easy motion
-EASY_MOTION_PLUGIN="${HOME}/.zsh/zsh-easy-motion/easy_motion.plugin.zsh"
-if [ -f $EASY_MOTION_PLUGIN ]
-then
-    echo 'bindkey initialized'
-    source $EASY_MOTION_PLUGIN
-    bindkey -M vicmd ' ' vi-easy-motion
-fi
