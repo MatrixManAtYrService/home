@@ -127,6 +127,19 @@ fi
 zle .accept-line
 }
 
+todaydir() {
+    DAYDIR=~/$(date +%F | sed 's#-#/#g')/
+    mkdir -p $DAYDIR
+    echo $DAYDIR
+}
+
+# Go to a directory named for today's date
+# better that using ~ or /tmp for bounding messes
+today() {
+    echo "    type \`popd\` to go back to $(pwd)"
+    pushd $(todaydir)
+}
+
 zle -N accept-line bitch
 
 # zsh-autosuggestions
@@ -185,7 +198,6 @@ source  "${HOME}/.zshrc2"
 EASY_MOTION_PLUGIN="${HOME}/.zsh/zsh-easy-motion/easy_motion.plugin.zsh"
 if [ -f $EASY_MOTION_PLUGIN ]
 then
-    echo 'bindkey initialized'
     source $EASY_MOTION_PLUGIN
     bindkey -M vicmd ' ' vi-easy-motion
 fi

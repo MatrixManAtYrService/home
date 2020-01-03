@@ -166,3 +166,6 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+" system clipboard
+vmap <C-c> "+y

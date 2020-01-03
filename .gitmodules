@@ -92,3 +92,6 @@
 [submodule ".zsh/zsh-easy-motion"]
 	path = .zsh/zsh-easy-motion
 	url = https://github.com/IngoHeimbach/zsh-easy-motion
+[submodule ".config/xresources"]
+	path = .config/xresources
+	url = https://github.com/solarized/xresources
